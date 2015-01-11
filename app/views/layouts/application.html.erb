@@ -7,8 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container">
+<%= Rails.application.class.parent_name %>.
+    <% if user_signed_in? %>
+      Welcome <strong><%= current_user.email %></strong>
+      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
+      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+    <% end %>
+        <div class="row">
+          <div class="span9">
+            <%= bootstrap_flash %>
+            <%= yield %>
+          </div><!--/span-->
+        </div><!--/row-->
 
-<%= yield %>
-
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+</div> <!-- /container -->
 </body>
 </html>
