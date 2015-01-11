@@ -1,0 +1,10 @@
+<div>
+  <strong><%= comment.user.email if comment.user %></strong>
+  <%= comment.comment %>
+  <% if current_user==@post.user %>
+  <%= link_to 'Delete Comment', [comment.post, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' },
+               :class => 'btn btn-danger' if comment.user %>
+   <% end %>
+</div>

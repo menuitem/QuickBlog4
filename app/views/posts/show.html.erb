@@ -23,3 +23,7 @@
               :class => 'btn btn-danger' %>
 <% end %>
 </div>
+<% if !current_user.nil? %>
+<%= render "comments/form" %>
+<% end %>
+<%= render @post.comments.reverse %>
